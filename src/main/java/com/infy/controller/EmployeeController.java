@@ -65,6 +65,9 @@ public class EmployeeController
 	public ResponseEntity<Void> deleteEmployee(@PathVariable Long id)
 	{
 		employeeService.deleteEmployee(id);
+		
+		System.out.println(id);
+		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
