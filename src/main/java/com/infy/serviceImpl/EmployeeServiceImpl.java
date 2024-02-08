@@ -12,71 +12,64 @@ import com.infy.repo.EmployeeRepo;
 import com.infy.service.EmpolyeeService;
 
 @Service
-public class EmployeeServiceImpl implements EmpolyeeService
-{
+public class EmployeeServiceImpl implements EmpolyeeService {
 
 	private EmployeeRepo employeeRepo;
 
-	@Autowired	
-	public EmployeeServiceImpl(EmployeeRepo employeeRepo) 
-	{
+	@Autowired
+	public EmployeeServiceImpl(EmployeeRepo employeeRepo) {
 		super();
 		this.employeeRepo = employeeRepo;
 	}
 
 	@Override
-	public List<Employee> getAllEmployees() 
-	{
+	public List<Employee> getAllEmployees() {
 		// TODO Auto-generated method stub
 		return employeeRepo.findAll();
 	}
 
 	@Override
-	public Employee getEmployeeById(Long id) 
-	{
+	public Employee getEmployeeById(Long id) {
 		// TODO Auto-generated method stub
-		return employeeRepo.findById(id).orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + id));
+//		return employeeRepo.findById(id).orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + id));
+		return employeeRepo.findById(id)
+				.orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + id));
+
 	}
 
 	@Override
-	public Employee createEmployee(EmployeeDTO employeeDTO)
-	{
+	public Employee createEmployee(EmployeeDTO employeeDTO) {
 		Employee employee = new Employee();
 		employee.setFirstName(employeeDTO.getFirstName());
 		employee.setLastName(employeeDTO.getLastName());
 		employee.setMobile(employeeDTO.getMobile());
 		employee.setAddress(employeeDTO.getAddress());
-		
+
 		// TODO Auto-generated method stub
 		return employeeRepo.save(employee);
 	}
 
 	@Override
-	public Employee updateEmployee(Long id, EmployeeDTO employeeDTO) 
-	{
+	public Employee updateEmployee(Long id, EmployeeDTO employeeDTO) {
 		Employee existingEmp = getEmployeeById(id);
-		
+
 		existingEmp.setFirstName(employeeDTO.getFirstName());
 		existingEmp.setLastName(employeeDTO.getLastName());
 		existingEmp.setMobile(employeeDTO.getMobile());
 		existingEmp.setAddress(employeeDTO.getAddress());
-		
-		return employeeRepo.save(existingEmp);
+
+		final Employee updatedEmp = employeeRepo.save(existingEmp);
+		return employeeRepo.save(updatedEmp);
 	}
 
 	@Override
-	public void deleteEmployee(Long id) 
-	{
+	public void deleteEmployee(Long id) {
 		// TODO Auto-generated method stub
-		
+
 		employeeRepo.deleteById(id);
-		
+
 	}
-	
-	
-	
-	
-	
+
 //	private final EmployeeRepository employeeRepository;
 //
 //    @Autowired
