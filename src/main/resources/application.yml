@@ -1,5 +1,6 @@
 server:
   port: 8080
+  
 
 spring:
   datasource:
@@ -15,3 +16,16 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+
+        
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      base-path: /manage
+      exposure:
+        include: '*'
+        
+        
+  
