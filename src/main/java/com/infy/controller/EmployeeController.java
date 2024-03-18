@@ -1,4 +1,4 @@
-package com.infy.controller;
+x   package com.infy.controller;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class EmployeeController
 		super();
 		this.employeeService = empolyeeService;
 	}
-
+//get all employees
 	@GetMapping
 	public ResponseEntity<List<Employee>> getAllEmployees()
 	{
@@ -40,7 +40,7 @@ public class EmployeeController
 		return new ResponseEntity<>(employees, HttpStatus.OK);
 	}
 	
-	
+	//get all employee by id
 	@GetMapping("/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id)
 	{
@@ -48,6 +48,7 @@ public class EmployeeController
 		return new ResponseEntity<>(employee, HttpStatus.OK);
 	}
 
+	//post a employee
 	@PostMapping
 	public ResponseEntity<Employee> createEmployee(@Validated @RequestBody EmployeeDTO employeeDTO) 
 	{
@@ -55,6 +56,7 @@ public class EmployeeController
 		return new ResponseEntity<>(createdEmployee, HttpStatus.CREATED);
 	}
 
+	//update all employees
 	@PutMapping("/{id}")
 	public ResponseEntity<Employee> updateEmployee(@PathVariable Long id,
 			@Validated @RequestBody EmployeeDTO employeeDTO)
@@ -63,6 +65,7 @@ public class EmployeeController
 		return new ResponseEntity<>(updatedEmployee, HttpStatus.OK);
 	}
 
+	//delete all employees
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteEmployee(@PathVariable Long id)
 	{

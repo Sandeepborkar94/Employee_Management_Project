@@ -73,7 +73,9 @@ ________________________________________________________________________________
 @JoinTable: This annotation is from JPA and specifies the details of the join table that is used to implement the many-to-many relationship between User and Role entities. It specifies the name of the join table (users_roles) and the names of the foreign key columns in the join table (USER_ID and ROLE_ID).
 
 
-
+____________________________________________________________________________________________________________________________________
+18/03/2023
+____________________________________________________________________________________________________________________________________
 
 
 
